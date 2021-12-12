@@ -55,7 +55,7 @@ class FileGenerator:
             number_length=15,
             )
 
-    def edu90(self):
+    def typical90(self):
         for i in range(1, self.contest_number+1):
             # Pathの設定
             if i < 10:
@@ -72,5 +72,5 @@ class FileGenerator:
 if __name__ == '__main__':
     # file_generator = FileGenerator('abc', 232)
     # file_generator.abc()
-    file_generator = FileGenerator('edu90', 90)
-    file_generator.edu90()
+    file_generator = FileGenerator('typical90', 90)
+    file_generator.typical90()
