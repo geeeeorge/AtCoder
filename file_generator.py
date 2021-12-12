@@ -1,43 +1,76 @@
 from pathlib import Path
 
-def FileGenerator(send_number, contest_number):
+
+class FileGenerator:
     """
     〜操作方法〜
-    ⓵ ファイルを作りたい階層に移動する
-    ⓶ 27行目の引数を設定する
-    ⓷ 17, 20 行目に各自でPathを設定する
-    ④ Pythonコードを実行
+    ① インスタンス作成
+    ② 作成するファイルのメソッドを呼ぶ
+    ③ メソッドがなければ，自分で追加する
     """
-    contest_name = ["abc", "arc", "agc", "past"] # コンテスト名
-    number_length = [6, 6, 6, 15] # 各コンテストの問題数
 
-    if send_number != 3:
-        contest_folder = Path(F"{contest_name[send_number].upper()}{contest_number}")
-        contest_folder.mkdir(exist_ok = True)
-    else: # PAST用
-        contest_folder = Path(F"第{contest_number}回アルゴリズム実技検定")
-        contest_folder.mkdir(exist_ok = True)
+    def __init__(self, contest_name, contest_number):
+        # コンテスト名
+        self.contest_name = contest_name
+        # 何回目のコンテストか
+        self.contest_number = contest_number
 
-    for i in range(number_length[send_number]):
-        if send_number != 3:
+    def generate_file(self, contest_folder_path, number_length):
+        """ファイルを作成．直接は叩かない
+
+        Args:
+            contest_folder_path (Path): 親のパス
+            number_length (int): 問題数
+        """
+        for i in range(number_length):
             # Pathの設定
-            make_py_file = Path(F"/Users/george/Documents/AtCoder/{contest_name[send_number].upper()}/{contest_folder}/{chr(65 + i)}.py")
-        else: # PAST用
-            # Pathの設定
-            make_py_file = Path(F"/Users/george/Documents/AtCoder/{contest_name[send_number].upper()}/{contest_folder}/{chr(65 + i)}.py")            
+            make_py_file = Path(F'/Users/george/Documents/AtCoder/{self.contest_name.upper()}/{contest_folder_path}/{chr(65 + i)}.py')
 
-        # Pythonのファイルを生成
-        make_py_file.parent.mkdir(parents=True, exist_ok=True)
-        make_py_file.touch()
+            # Pythonのファイルを生成
+            make_py_file.parent.parent.mkdir(exist_ok=True)
+            make_py_file.parent.mkdir(exist_ok=True)
+            make_py_file.touch()
+
+    def abc(self):
+        self.generate_file(
+            contest_folder_path=Path(F'{self.contest_name.upper()}{self.contest_number}'),
+            number_length=6,
+            )
+
+    def arc(self):
+        self.generate_file(
+            contest_folder_path=Path(F'{self.contest_name.upper()}{self.contest_number}'),
+            number_length=6,
+            )
+
+    def agc(self):
+        self.generate_file(
+            contest_folder_path=Path(F'{self.contest_name.upper()}{self.contest_number}'),
+            number_length=6,
+            )
+
+    def past(self):
+        self.generate_file(
+            contest_folder_path=Path(F'第{self.contest_number}回アルゴリズム実技検定'),
+            number_length=15,
+            )
+
+    def edu90(self):
+        for i in range(1, self.contest_number+1):
+            # Pathの設定
+            if i < 10:
+                make_py_file = Path(F'/Users/george/Documents/AtCoder/{self.contest_name.upper()}/0{i}.py')
+            else:
+                make_py_file = Path(F'/Users/george/Documents/AtCoder/{self.contest_name.upper()}/{i}.py')
+
+            # Pythonのファイルを生成
+            make_py_file.parent.parent.mkdir(exist_ok=True)
+            make_py_file.parent.mkdir(exist_ok=True)
+            make_py_file.touch()
 
 
 if __name__ == '__main__':
-    for i in range(231):
-        FileGenerator(0, i)
-    for i in range(132):
-        FileGenerator(1, i)
-    for i in range(57):
-        FileGenerator(2, i)
-    for i in range(9):
-        FileGenerator(3, i)
-
+    # file_generator = FileGenerator('abc', 232)
+    # file_generator.abc()
+    file_generator = FileGenerator('edu90', 90)
+    file_generator.edu90()
