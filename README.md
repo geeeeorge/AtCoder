@@ -1,2 +1,3 @@
 # AtCoder
-AtCoderの問題をPythonで解いていきます
+
+AtCoderの問題をPythonで解く
