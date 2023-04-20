@@ -35,19 +35,19 @@ class FileGenerator:
 
     def abc(self):
         self.generate_file(
-            contest_folder_path=Path(F'{self.contest_name.upper()}{self.contest_number}'),
+            contest_folder_path=Path(F'{self.contest_number}'),
             number_length=8,
             )
 
     def arc(self):
         self.generate_file(
-            contest_folder_path=Path(F'{self.contest_name.upper()}{self.contest_number}'),
+            contest_folder_path=Path(F'{self.contest_number}'),
             number_length=6,
             )
 
     def agc(self):
         self.generate_file(
-            contest_folder_path=Path(F'{self.contest_name.upper()}{self.contest_number}'),
+            contest_folder_path=Path(F'{self.contest_number}'),
             number_length=6,
             )
 
@@ -70,8 +70,23 @@ class FileGenerator:
             make_py_file.parent.mkdir(exist_ok=True)
             make_py_file.touch()
 
+    def math_and_algorithm(self):
+        for i in range(1, self.contest_number+1):
+            # Pathの設定
+            if i < 10:
+                make_py_file = Path(F'{self.root_path}/{self.contest_name}/00{i}.py')
+            elif i < 100:
+                make_py_file = Path(F'{self.root_path}/{self.contest_name}/0{i}.py')
+            else:
+                make_py_file = Path(F'{self.root_path}/{self.contest_name}/{i}.py')
+
+            # Pythonのファイルを生成
+            make_py_file.parent.parent.mkdir(exist_ok=True)
+            make_py_file.parent.mkdir(exist_ok=True)
+            make_py_file.touch()
+
 
 if __name__ == '__main__':
     root_path = '/Users/...'
-    file_generator = FileGenerator(root_path, 'abc', '212')
+    file_generator = FileGenerator(root_path, 'abc', '215')
     file_generator.abc()
