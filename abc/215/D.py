@@ -4,7 +4,8 @@ A = list(map(int, input().split()))
 P = set()
 
 
-def divider(n):
+# 素因数分解
+def prime_factorize(n):
     i = 2
     # nを割り切れるまでiを増やしていく
     while i * i <= n:
@@ -20,7 +21,7 @@ def divider(n):
 
 for a in A:
     print(P)
-    divider(a)
+    prime_factorize(a)
 
 print(P)
 ans = [False, True] + [True] * (M - 1)
