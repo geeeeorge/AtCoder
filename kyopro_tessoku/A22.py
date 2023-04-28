@@ -3,7 +3,10 @@ A = list(map(int, input().split()))
 B = list(map(int, input().split()))
 
 # dp
-dp = [0] * N
+# dpの初期化の際に0で初期化していたが、これだとdp[i]が更新されない場合に0になってしまうので、
+# dp[i]が更新されない場合にはdp[i]の値をそのままにしておく必要がある。
+dp = [-10**8] * N
+dp[0] = 0
 for i in range(N-1):
     dp[A[i] - 1] = max(dp[A[i] - 1], dp[i] + 100)
     dp[B[i] - 1] = max(dp[B[i] - 1], dp[i] + 150)
