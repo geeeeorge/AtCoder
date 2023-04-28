@@ -8,7 +8,8 @@ for i in range(N):
     AB.append((a, b))
 
 # ABをaでソート
-AB.sort(key=lambda x: x[0])
+# その際、aが同じならbが大きい順にソート
+AB.sort(key=lambda x: (x[0], -x[1]))
 
 # ABのbについてLIS
 L = []
