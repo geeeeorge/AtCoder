@@ -7,9 +7,12 @@ AtCoderの問題をPythonで解く
 
 ## [自作ライブラリ](lib/src)
 ### [グラフ](lib/src/graph)
+- [幅優先探索](lib/src/graph/bfs.py)
+- [深さ優先探索](lib/src/graph/dfs.py)
 - [ダイクストラ法](lib/src/graph/dijkstra.py)
 
 ### [数学](lib/src/math)
+- [組み合わせ](lib/src/math/combination.py)
 - [エラトステネスの篩](lib/src/math/eratosthenes.py)
 - [最大公約数](lib/src/math/gcd.py)
 - [最小公倍数](lib/src/math/lcm.py)
