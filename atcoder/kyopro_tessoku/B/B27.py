@@ -11,10 +11,6 @@ def gcd(a, b):
 
 
 def lcm(a, b):
-    """
-    最小公倍数を求める
-    Least Common Multiple
-    """
     return a * b // gcd(a, b)
 
 

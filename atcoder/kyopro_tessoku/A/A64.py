@@ -1,7 +1,4 @@
 def dijkstra(graph, start):
-    """
-    ダイクストラ法
-    """
     import heapq
 
     n = len(graph)

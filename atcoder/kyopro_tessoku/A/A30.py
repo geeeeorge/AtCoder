@@ -13,10 +13,6 @@ def pow(a, n, mod=10 ** 9 + 7):
 
 
 def combination(n, r, m):
-    """
-    nCrを求める
-    mで割ったあまりを出力
-    """
     # 分子aを求める
     a = 1
     for i in range(n):
