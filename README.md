@@ -15,6 +15,9 @@ AtCoderの問題をPythonで解く
 - [最小公倍数](lib/src/math/lcm.py)
 - [繰り返し二乗法](lib/src/math/pow.py)
 
+### [その他](lib/src/other)
+- [二分探索](lib/src/other/binary_search.py)
+
 ## 参考リンク
 - [AtCoder](https://atcoder.jp/)
 - [AtCoder Problems](https://kenkoooo.com/atcoder/#/table/)
