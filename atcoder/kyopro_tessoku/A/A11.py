@@ -5,9 +5,6 @@ A = list(map(int, input().split()))
 
 
 def binary_search(l, x):
-    """
-    二分探索
-    """
     left = 0
     right = len(l) - 1
     while left <= right:
