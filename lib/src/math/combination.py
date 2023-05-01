@@ -1,9 +1,9 @@
-def combination(n, r, m):
+def combination(n, r, m=10 ** 9 + 7):
     """
     nCrを求める
     mで割ったあまりを出力
     """
-    def pow(a, n, mod=10 ** 9 + 7):
+    def pow(a, n, mod):
         res = 1
         while n > 0:
             if n & 1:
