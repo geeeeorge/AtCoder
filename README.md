@@ -1,5 +1,5 @@
 # AtCoder
-AtCoderの問題をPythonで解く
+AtCoder, AIZU ONLINE JUDEGEの問題をPythonで解く
 
 ## 競技プログラミングの鉄則
 - [README](atcoder/kyopro_tessoku)
@@ -24,3 +24,4 @@ AtCoderの問題をPythonで解く
 ## 参考リンク
 - [AtCoder](https://atcoder.jp/)
 - [AtCoder Problems](https://kenkoooo.com/atcoder/#/table/)
+- [AIZU ONLINE JUDGE](https://onlinejudge.u-aizu.ac.jp/courses/list)
