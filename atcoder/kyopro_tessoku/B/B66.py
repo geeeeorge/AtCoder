@@ -1,13 +1,10 @@
 class UnionFind:
-    """
-    UnionFind
-    """
-
     def __init__(self, n):
         import sys
         sys.setrecursionlimit(10 ** 6)
 
         self.parent = [-1] * n
+        self.size = [1] * n
 
     def root(self, x: int) -> int:
         if self.parent[x] == -1:
@@ -22,7 +19,13 @@ class UnionFind:
         y = self.root(y)
         if x == y:
             return
-        self.parent[x] = y
+        # マージテク
+        # xの方が大きい
+        if self.size[x] < self.size[y]:
+            x, y = y, x
+        if self.size[x] == self.size[y]:
+            self.size[x] += 1
+        self.parent[y] = x
 
     def is_same(self, x: int, y: int) -> bool:
         return self.root(x) == self.root(y)
@@ -30,37 +33,35 @@ class UnionFind:
 
 N, M = map(int, input().split())
 A = []
-B = []
 for _ in range(M):
     a, b = map(int, input().split())
     a, b = a - 1, b - 1
-    A.append(a)
-    B.append(b)
-canceled = []
+    A.append((a, b))
+canceled = set(i for i in range(M))
 cmd = []
 Q = int(input())
-for _ in range(Q):
-    q = list(map(int, input().split()))
-    cmd.append(q)
+query = [list(map(int, input().split())) for _ in range(Q)]
+for q in query:
     if q[0] == 1:
-        canceled.append(q[1]-1)
+        q[1] -= 1
+        canceled.discard(q[1])
+    else:
+        q[1] -= 1
+        q[2] -= 1
+    cmd.append(q)
 
 uf = UnionFind(N)
 
-for i in range(M):
-    if i not in canceled:
-        uf.merge(A[i], B[i])
+for i in canceled:
+    a, b = A[i]
+    uf.merge(a, b)
 
 ans = []
-for _ in range(Q):
-    c = cmd.pop()
+for c in reversed(cmd):
     if c[0] == 1:
-        uf.merge(A[c[1]-1], B[c[1]-1])
+        a, b = A[c[1]]
+        uf.merge(a, b)
     else:
-        if uf.is_same(c[1]-1, c[2]-1):
-            ans.append('Yes')
-        else:
-            ans.append('No')
-ans.reverse()
-for a in ans:
+        ans.append("Yes" if uf.is_same(c[1], c[2]) else "No")
+for a in reversed(ans):
     print(a)
