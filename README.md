@@ -10,6 +10,7 @@ AtCoder, AIZU ONLINE JUDEGEの問題をPythonで解く
 - [幅優先探索](lib/src/graph/bfs.py)
 - [深さ優先探索](lib/src/graph/dfs.py)
 - [ダイクストラ法](lib/src/graph/dijkstra.py)
+- [UnionFind](lib/src/graph/union_find.py)
 
 ### [数学](lib/src/math)
 - [組み合わせ](lib/src/math/combination.py)
