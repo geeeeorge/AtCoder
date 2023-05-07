@@ -19,6 +19,9 @@ AtCoder, AIZU ONLINE JUDEGEの問題をPythonで解く
 - [最小公倍数](lib/src/math/lcm.py)
 - [繰り返し二乗法](lib/src/math/pow.py)
 
+### [文字列](lib/src/string)
+- [ローリングハッシュ](lib/src/string/rolling_hash.py)
+
 ### [その他](lib/src/other)
 - [二分探索](lib/src/other/binary_search.py)
 
