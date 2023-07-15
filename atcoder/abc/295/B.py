@@ -10,15 +10,10 @@ for i in range(R):
             bombs.append((int(B[i][j]), i, j))
 
 for b, i, j in bombs:
-    for k in range(b + 1):
-        for l in range(b + 1 - k):
-            if i - k >= 0 and j + l < C:
-                B[i - k][j + l] = '.'
-            if i + k < R and j + l < C:
-                B[i + k][j + l] = '.'
-            if i - k >= 0 and j - l >= 0:
-                B[i - k][j - l] = '.'
-            if i + k < R and j - l >= 0:
-                B[i + k][j - l] = '.'
+    for k in range(R):
+        for l in range(C):
+            dis = abs(i-k) + abs(j-l)
+            if dis <= b:
+                B[k][l] = '.'
 for row in B:
     print(''.join(row))
